@@ -1,0 +1,46 @@
+.home {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background: url(../img/background.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.btn{
+    position: absolute;
+    box-sizing: border-box;
+    width: 16vw;
+    height: 16vw;
+    background: url(../img/button.png);
+    background-size: 100%;
+    color: white;
+    padding: 2.5vw;
+    padding-top: 3.2vw;
+    font-size: 3.5vw;
+    line-height: 5vw;
+    letter-spacing: 0.5vw;
+    font-family:SimHei, STHeiti;
+    top: 48vh;
+}
+
+.one{
+    left: 22vw;
+}
+
+.two{
+    left: 42vw;
+}
+
+.three{
+    left: 63vw;
+}
+
+.one:hover{
+
+}
+
+
+
+
+

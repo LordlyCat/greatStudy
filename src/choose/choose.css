@@ -1,0 +1,144 @@
+*{
+    box-sizing: border-box;
+    font-family:SimHei, STHeiti;
+}
+
+#choose{
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background: url(../img/chooseBackground.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.systemName{
+    position: absolute;
+    top: 42vh;
+    width: 100vw;
+    text-align: center;
+    color: rgb(251, 201, 108);
+    font-size: 6vw;
+    font-weight: bold;
+}
+
+.dropWrapper{
+    position: absolute;
+    overflow: scroll;
+    width: 60vw;
+    background: rgb(248, 248, 229);
+    border-radius: 7px;
+    line-height: 7vw;
+    left: 20vw;
+    text-indent: 5vw;
+    z-index: 1;
+    box-shadow: 0 0.8vw 0.1vw 0vw rgba(0, 0, 0, 0.5); 
+}
+
+.selectInput{
+
+}
+
+.valueBox{
+    overflow: hidden;
+    width: 100%;
+    height: 7vw;
+    line-height: 7vw;
+    text-indent: 5vw;
+}
+
+.valueBox:first-child{
+    margin-top: 0;
+}
+
+.firstBox{
+    top: 48vh;
+}
+
+.secondBox{
+    top: 54vh;
+}
+
+.thirdBox{
+    top: 60vh;
+}
+
+.nextBtn{
+    position: absolute;
+    width: 60vw;
+    height: 8vw;
+    background: rgb(242, 201, 56);
+    border-radius: 7px;
+    line-height: 8vw;
+    text-align: center;
+    color: rgb(186, 0, 0);
+    font-weight: bolder;
+    top: 68vh;
+    left: 20vw;
+    box-shadow: 0 0.8vw 0.1vw 0vw rgba(0, 0, 0, 0.5); 
+}
+
+.cover{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999999;
+}
+
+.bullet{
+    overflow: hidden;
+    width: 85vw;
+    height: 75vw;
+    background: url('../img/bullet.png') no-repeat;
+    background-size: 100% 100%;
+    margin-left: 7.5vw;
+    margin-top: 27vh;
+}
+
+.cancel{
+    width: 8vw;
+    height: 8vw;
+    background: url('../img/cancel.png') no-repeat;
+    background-size: 100%;
+    margin-left: 73.5vw;
+    margin-top: 15vw;
+}
+
+.nameWrapper{
+    width: 60%;
+    margin: auto;
+    margin-top: 3vw;
+}
+
+.nameWrapper p{
+    display: inline-block;
+    float: left;
+    font-size: 3vw;
+    line-height: 0vw;
+    font-weight: bolder;
+}
+
+.nameWrapper .name{
+    width: 38vw;
+    height: 6vw;
+    display: inline-block;
+    background: white;  
+    outline:none;  
+    border:0px;
+    border-radius: 5px;
+    text-indent: 8px;
+}
+
+.bullet .submit{
+    width: 68%;
+    height: 7vw;
+    background: rgb(255, 73, 73);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 7vw;
+    margin: auto;
+    margin-top: 7vw;
+    box-shadow: 0.4vw 0.6vw 0.2vw 0.1vw rgb(170, 41, 41);
+}
+
