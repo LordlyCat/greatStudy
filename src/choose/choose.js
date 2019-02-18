@@ -247,11 +247,13 @@ class BulletBox extends Component {
         this.state = {
             name: '',
             age: '',
-            job: ''
+            job: '',
+            tzb: ''
         }
         this.getName = this.getName.bind(this);
         this.getAge = this.getAge.bind(this);
         this.getJob = this.getJob.bind(this);
+        this.getTzb = this.getTzb.bind(this);
         this.submitData = this.submitData.bind(this);
     }
     getName(e) {
@@ -267,6 +269,11 @@ class BulletBox extends Component {
     getJob(e) {
         this.setState({
             job: e.target.value
+        })
+    }
+    getTzb(e) {
+        this.setState({
+            tzb: e.target.value
         })
     }
     submitData() {
@@ -301,6 +308,13 @@ class BulletBox extends Component {
                             className="name" 
                             value={this.state.job}
                             onChange={this.getJob} />
+                    </div>
+                    <div className="nameWrapper">
+                        <p>团支部：</p>
+                        <input type="text" 
+                            className="name" 
+                            value={this.state.tzb}
+                            onChange={this.getTzb} />
                     </div>
                     <div className="submit" onTouchEnd={this.submitData}>提交</div>
                 </div>

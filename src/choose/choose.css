@@ -88,11 +88,11 @@
 .bullet{
     overflow: hidden;
     width: 85vw;
-    height: 75vw;
+    height: 85vw;
     background: url('../img/bullet.png') no-repeat;
     background-size: 100% 100%;
     margin-left: 7.5vw;
-    margin-top: 27vh;
+    margin-top: 20vh;
 }
 
 .cancel{
@@ -101,13 +101,14 @@
     background: url('../img/cancel.png') no-repeat;
     background-size: 100%;
     margin-left: 73.5vw;
-    margin-top: 15vw;
+    margin-top: 17vw;
 }
 
 .nameWrapper{
+    overflow: hidden;
     width: 60%;
     margin: auto;
-    margin-top: 3vw;
+    margin-bottom: 3vw;
 }
 
 .nameWrapper p{
@@ -127,6 +128,8 @@
     border:0px;
     border-radius: 5px;
     text-indent: 8px;
+
+    float: right;
 }
 
 .bullet .submit{
