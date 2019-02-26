@@ -23,9 +23,9 @@ class Home extends Component {
             },
             //header: 'application/json',
             success: (data) => {
-                //unescape(str.replace(/\U/g, '%u'))
+                console.log(JSON.parse(data));
                 this.setState({
-                    //data: JSON.parse(data)
+                    data: JSON.parse(data)
                 })
             },
             error: (err) => {
@@ -52,9 +52,9 @@ class Btn extends Component {
             <div className={this.props.class} 
             onClick={() => {
                 localStorage.setItem('system', this.props.name);
-                localStorage.setItem('selectData', this.props.data);
-                console.log(this.props.data)
+                localStorage.setItem('selectData', JSON.stringify(this.props.data));
                 window.location.hash = 'choose';
+                console.log(this.props.data)
             }}>
                 {this.props.name}
             </div>
