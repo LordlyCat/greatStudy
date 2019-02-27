@@ -117,6 +117,7 @@
       "react-app"
     ]
   },
+  "proxy": "http://193.112.183.206",
   "homepage": ".",
   "devDependencies": {
     "less": "^3.9.0",

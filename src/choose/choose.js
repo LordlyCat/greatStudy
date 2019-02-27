@@ -366,7 +366,7 @@ class BulletBox extends Component {
         }
         this.props.setCoverStyle()
         ajax.call(this, {
-            url: './admin/youth/uploadUserInfo',
+            url: '/admin/youth/uploadUserInfo',
             method: 'POST',
             async: true,
             data: userData,
