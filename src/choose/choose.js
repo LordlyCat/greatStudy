@@ -356,10 +356,12 @@ class BulletBox extends Component {
         userData.branch_node_name = e.target.value;
     }
     submitData() {
+        userData.category_name = localStorage.getItem('system');
         console.log(userData);
         for (var value in userData) {
             
             if (userData[value].length === 0 || userData[value].replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) {
+                alert('填写内容不能为空')
                 return false;
             }
             //console.log(userData[value]);
@@ -376,12 +378,11 @@ class BulletBox extends Component {
             //header: 'application/json',
             success: (data) => {
                 console.log('upload:', userData);
-                // console.log(JSON.parse(data));
-                // this.setState({
-                //     data: JSON.parse(data)
-                // })
+                alert('提交成功');
+                window.location.href = 'http://test.shingdstar.com/admin/youth/cyol';
             },
             error: (err) => {
+                alert('提交失败，请刷新重试')
                 console.log(err);
             }
         })
