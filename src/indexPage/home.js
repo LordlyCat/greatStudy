@@ -15,7 +15,7 @@ class Home extends Component {
     }
     componentWillMount() {
         ajax.bind(this)({
-            url: 'BranchesTrees.json',
+            url: '/BranchesTrees.json',
             method: 'GET',
             async: true,
             headers: {
