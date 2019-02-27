@@ -8,11 +8,16 @@ import ajax from '../ajax.js';
 let aa = true;
 let userData = {
     category_name: localStorage.getItem('system'),
-    mechanism_name: null,
-    branches_name: null,
-    branch_node_name: null,
-    name: null
+    mechanism_name: '',
+    branches_name: '',
+    branch_node_name: '',
+    name: '',
+    age: '',
+    job: ''
 }
+
+let resetFlag = false;
+
 let selectedIndex = null;
 // let ajaxs = (opinion) => {
 //     let opt = opinion;
@@ -52,7 +57,7 @@ class Choose extends Component {
         // })
         this.state = {
             data: this.props,
-            branches: ['无'],
+            branchesKey: 0,
             coverStyle: {
                 display: 'none'
             }
@@ -64,15 +69,15 @@ class Choose extends Component {
         }
 
         this.setCoverStyle = this.setCoverStyle.bind(this);
-
+        this.setBranchesKey = this.setBranchesKey.bind(this);
     }
     setCoverStyle() {
         if (!aa) {
             return false;
         }
         if (this.state.coverStyle.display === 'none') {
-            if (userData.mechanism_name === null ||
-                userData.branches_name === null) {
+            if (userData.mechanism_name === '' ||
+                userData.branches_name === '') {
                 alert("请选择完毕信息")
                 return false;
             }
@@ -90,9 +95,19 @@ class Choose extends Component {
             })
         }
     }
+    setBranchesKey(key) {
+        resetFlag = true;
+        userData.branches_name = '';
+        this.setState({
+            branchesKey: key
+        }, () => {
+            console.log('key:', key)
+        })
+    }
     render() {
         //console.log(localStorage.getItem('selectData'))
         let data = JSON.parse(localStorage.getItem('selectData'));
+        //console.log('data', data)
         if (data == undefined) {
             return (
                 <div id="choose">
@@ -101,22 +116,21 @@ class Choose extends Component {
                 </div>
             )
         }
-        //console.log(data.mechanisms[1].branches[0].nodes)
-        //console.log(JSON.parse(data))
-        //localStorage.getItem('selectData').mechanisms.
+        
         let newData = {};
-        data.mechanisms.forEach(function(element, index) {
-            Object.assign()
-        });
+        
         let mechanisms = data.mechanisms.map(element => element.mechanism_name);
+        let branches_name = data.mechanisms[this.state.branchesKey].branches.map(element => element.branches_name)
+
         return (
             <div id="choose">
                 <div className="systemName">{this.systemName}</div>
                 <DropBox classname="dropWrapper firstBox" 
                 data={mechanisms}
-                initialization='--直属团组织--' />
+                initialization='--直属团组织--' 
+                setBranchesKey={this.setBranchesKey}/>
                 <DropBox classname="dropWrapper secondBox" 
-                data={this.state.branches}
+                data={branches_name}
                 initialization="请选择" />
                 <NextBtn setCoverStyle={this.setCoverStyle} />
 
@@ -135,8 +149,11 @@ class DropBox extends Component {
             selected: this.props.initialization,
             initialization: this.props.initialization,
             moveFlag: false,
-            zIndex: 1
+            zIndex: 1,
+            branchesKey: null
         }
+
+        this.branchesKey = [];
         this.touchStartTime = null;
         this.show = this.show.bind(this);
         this.touchStart = this.touchStart.bind(this);
@@ -175,6 +192,11 @@ class DropBox extends Component {
                 showList: false,
                 zIndex: 1
             });
+            if (this.state.initialization === '--直属团组织--') {
+                this.setState({
+                    branchesKey: userData.mechanism_name
+                })
+            }
             setTimeout(function() {
                 aa = true;
             }, 600)
@@ -193,19 +215,23 @@ class DropBox extends Component {
             } else {
                 showContent = this.state.selected;
                 if (this.state.initialization === '请选择') {
-                    userData.branches_name = showContent;
+                    if (resetFlag) {
+                        showContent = this.state.initialization;
+                        resetFlag = !resetFlag;
+                    } else {
+                        userData.branches_name = showContent;
+                    }
+                    
                 } else {
                     userData.mechanism_name = showContent;
-                    this.setState({
-                        branches: userData.mechanism_name
-                    })
                 }
             }
 
         } else {
             showContent = <SelectInput classname="selectInput" 
             childSelect={this.props.data}
-            setSelected={this.setSelected} />
+            setSelected={this.setSelected} 
+            setBranchesKey={this.props.setBranchesKey}/>
         }
         return (
             <div className={this.props.classname} 
@@ -232,9 +258,13 @@ class SelectInput extends Component {
 
     render() {
         let valueArr = this.childSelect.map((value, index) => {
+            //console.log(index);
             return (
-                <ValueBox value={value} key={index}
-                setSelected={this.props.setSelected} />
+                <ValueBox value={value} 
+                myKey={index} 
+                key={index}
+                setSelected={this.props.setSelected} 
+                setBranchesKey={this.props.setBranchesKey} />
             )
         })
         return (
@@ -264,6 +294,7 @@ class ValueBox extends Component {
             backgroundColor: 'rgb(248, 248, 229)'
         })
         this.props.setSelected(this.props.value);
+        if (this.props.setBranchesKey) {this.props.setBranchesKey(this.props.myKey)}
     }
     render() {
         return (
@@ -310,11 +341,13 @@ class BulletBox extends Component {
         this.setState({
             age: e.target.value
         })
+        userData.age = e.target.value
     }
     getJob(e) {
         this.setState({
             job: e.target.value
         })
+        userData.job = e.target.value
     }
     getTzb(e) {
         this.setState({
@@ -324,25 +357,34 @@ class BulletBox extends Component {
     }
     submitData() {
         console.log(userData);
-        this.props.setCoverStyle()
-        ajax.call(this, {
-            url: 'admin/youth/uploadUserInfo',
-            method: 'POST',
-            async: true,
-            headers: {
-                "Content-type": 'application/json'
-            },
-            //header: 'application/json',
-            success: (data) => {
-                console.log(JSON.parse(data));
-                this.setState({
-                    data: JSON.parse(data)
-                })
-            },
-            error: (err) => {
-                console.log(err);
+        for (var value in userData) {
+            
+            if (userData[value].length === 0 || userData[value].replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) {
+                return false;
             }
-        })
+            console.log(userData[value]);
+        }
+        this.props.setCoverStyle()
+        // ajax.call(this, {
+        //     url: 'admin/youth/uploadUserInfo',
+        //     method: 'POST',
+        //     async: true,
+        //     data: userData,
+        //     headers: {
+        //         "Content-type": 'application/x-www-form-urlencoded'
+        //     },
+        //     //header: 'application/json',
+        //     success: (data) => {
+        //         console.log('upload:', userData);
+        //         // console.log(JSON.parse(data));
+        //         // this.setState({
+        //         //     data: JSON.parse(data)
+        //         // })
+        //     },
+        //     error: (err) => {
+        //         console.log(err);
+        //     }
+        // })
     }
     render() {
         return (
