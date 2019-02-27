@@ -362,29 +362,29 @@ class BulletBox extends Component {
             if (userData[value].length === 0 || userData[value].replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) {
                 return false;
             }
-            console.log(userData[value]);
+            //console.log(userData[value]);
         }
         this.props.setCoverStyle()
-        // ajax.call(this, {
-        //     url: 'admin/youth/uploadUserInfo',
-        //     method: 'POST',
-        //     async: true,
-        //     data: userData,
-        //     headers: {
-        //         "Content-type": 'application/x-www-form-urlencoded'
-        //     },
-        //     //header: 'application/json',
-        //     success: (data) => {
-        //         console.log('upload:', userData);
-        //         // console.log(JSON.parse(data));
-        //         // this.setState({
-        //         //     data: JSON.parse(data)
-        //         // })
-        //     },
-        //     error: (err) => {
-        //         console.log(err);
-        //     }
-        // })
+        ajax.call(this, {
+            url: 'admin/youth/uploadUserInfo',
+            method: 'POST',
+            async: true,
+            data: userData,
+            headers: {
+                "Content-type": 'application/x-www-form-urlencoded'
+            },
+            //header: 'application/json',
+            success: (data) => {
+                console.log('upload:', userData);
+                // console.log(JSON.parse(data));
+                // this.setState({
+                //     data: JSON.parse(data)
+                // })
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        })
     }
     render() {
         return (
