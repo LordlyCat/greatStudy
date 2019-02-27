@@ -72,6 +72,7 @@ class Choose extends Component {
         this.setBranchesKey = this.setBranchesKey.bind(this);
     }
     setCoverStyle() {
+        console.log(aa);
         if (!aa) {
             return false;
         }
@@ -228,10 +229,24 @@ class DropBox extends Component {
             }
 
         } else {
-            showContent = <SelectInput classname="selectInput" 
-            childSelect={this.props.data}
-            setSelected={this.setSelected} 
-            setBranchesKey={this.props.setBranchesKey}/>
+            console.log(this.props.data)
+            if (this.props.data.length && this.props.data.length === 1) {
+                showContent = this.props.data[0];
+                if (this.state.initialization === '请选择') {
+                    userData.branches_name = showContent;
+                } else {
+                    userData.mechanism_name = showContent;
+                }
+                aa = true;
+                console.log('haha')
+            } else {
+                console.log('es')
+                showContent = <SelectInput classname="selectInput" 
+                childSelect={this.props.data}
+                setSelected={this.setSelected} 
+                setBranchesKey={this.props.setBranchesKey}/>
+            }
+            
         }
         return (
             <div className={this.props.classname} 
