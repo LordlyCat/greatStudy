@@ -397,7 +397,8 @@ class BulletBox extends Component {
                 window.location.href = 'http://test.shingdstar.com/admin/youth/cyol';
             },
             error: (err) => {
-                alert(err)
+
+                alert('提交失败，请刷新重试或返回入口');
                 console.log(err);
             }
         })
@@ -418,8 +419,8 @@ class BulletBox extends Component {
                     </div>
                     <div className="nameWrapper">
                         <p>年龄：</p>
-                        <input type="text" 
-                            className="name" 
+                        <input type="number"
+                            className="name"
                             value={this.state.age}
                             onChange={this.getAge} />
                     </div>
