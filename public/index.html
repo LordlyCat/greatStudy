@@ -40,5 +40,31 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://wx.idsbllp.cn/wx-api/share.js"></script>
+    <script>
+    import share from '../src/img/share.jpg' 
+    WXSHARE.config({ debug: false });
+    WXSHARE.ready(function() {
+        var option = {
+            title: "青年大学习|重庆共青团",
+            link: "http://test.shingdstar.com/admin/youth/hello",
+            imgUrl: share,
+            desc: '重庆共青团学习微课堂',
+            type: '',
+            success: function() {
+                console.log('分享成功');
+            },
+            cancel: function() {
+                console.log('取消分享');
+            },
+        };
+        wx.onMenuShareTimeline(option);
+        wx.onMenuShareAppMessage(option);
+        wx.onMenuShareQQ(option);
+        wx.onMenuShareWeibo(option);
+        wx.onMenuShareQZone(option);
+    });
+    </script>
   </body>
 </html>

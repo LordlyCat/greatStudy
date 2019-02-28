@@ -113,7 +113,7 @@ class Choose extends Component {
             return (
                 <div id="choose">
                 <div className="systemName">{this.systemName}</div>
-                    <h3>网络延迟，数据加载错误，请返回上一页重试</h3>
+                    <h3>网络延迟，数据加载错误，请返回上一页或入口重试</h3>
                 </div>
             )
         }
