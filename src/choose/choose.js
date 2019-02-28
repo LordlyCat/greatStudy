@@ -397,7 +397,7 @@ class BulletBox extends Component {
                 window.location.href = 'http://test.shingdstar.com/admin/youth/cyol';
             },
             error: (err) => {
-                alert('提交失败，请刷新重试')
+                alert(err)
                 console.log(err);
             }
         })
