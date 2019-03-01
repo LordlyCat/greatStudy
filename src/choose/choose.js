@@ -106,9 +106,7 @@ class Choose extends Component {
         })
     }
     render() {
-        //console.log(localStorage.getItem('selectData'))
         let data = JSON.parse(localStorage.getItem('selectData'));
-        //console.log('data', data)
         if (data == undefined) {
             return (
                 <div id="choose">
@@ -122,7 +120,7 @@ class Choose extends Component {
         
         let mechanisms = data.mechanisms.map(element => element.mechanism_name);
         let branches_name = data.mechanisms[this.state.branchesKey].branches.map(element => element.branches_name)
-
+        //['abcdefghijklmnopqrstuvwxyz']
         return (
             <div id="choose">
                 <div className="systemName">{this.systemName}</div>
@@ -168,9 +166,10 @@ class DropBox extends Component {
     }
     show() {
         let timeDifference = Date.parse(new Date()) - this.touchStartTime;
-        if (timeDifference > 40) {
+        if (timeDifference > 10) {
             return false;
         }
+        document.querySelector('.dropWrapper').scrollTop = 0;
         if (!this.state.showList && !this.state.moveFlag) {
             aa = false;
             let dataLength = this.props.data.length;
@@ -231,6 +230,11 @@ class DropBox extends Component {
         } else {
             console.log(this.props.data)
             if (this.props.data.length && this.props.data.length === 1) {
+                if (this.state.zIndex === 9999) {
+                    this.setState({
+                        zIndex: 1
+                    })
+                }
                 showContent = this.props.data[0];
                 if (this.state.initialization === '请选择') {
                     userData.branches_name = showContent;

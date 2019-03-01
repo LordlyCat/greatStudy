@@ -36,7 +36,10 @@
     border-radius: 7px;
     line-height: 7vw;
     left: 20vw;
-    text-indent: 5vw;
+    padding-left: 2vw;
+    text-align: left;
+    /*text-indent: 4vw;*/
+    /*text-align: center;*/
     z-index: 1;
     box-shadow: 0 0.8vw 0.1vw 0vw rgba(0, 0, 0, 0.5); 
 }
@@ -48,9 +51,9 @@
 .valueBox{
     overflow: hidden;
     width: 100%;
-    height: 7vw;
+    min-height: 7vw;
     line-height: 7vw;
-    text-indent: 5vw;
+    text-indent: 0vw;
 }
 
 .valueBox:first-child{
