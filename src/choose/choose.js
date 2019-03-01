@@ -159,14 +159,15 @@ class DropBox extends Component {
         this.setSelected = this.setSelected.bind(this);
     }
     touchStart() {
-        this.touchStartTime = Date.parse(new Date());
+        this.touchStartTime = (new Date()).valueOf();
         this.setState({
             zIndex: 9999
         })
     }
     show() {
-        let timeDifference = Date.parse(new Date()) - this.touchStartTime;
-        if (timeDifference > 10) {
+        let timeDifference = (new Date()).valueOf() - this.touchStartTime;
+        console.log(timeDifference);
+        if (timeDifference > 300) {
             return false;
         }
         document.querySelector('.dropWrapper').scrollTop = 0;
