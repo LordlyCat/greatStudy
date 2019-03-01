@@ -54,6 +54,7 @@
     min-height: 7vw;
     line-height: 7vw;
     text-indent: 0vw;
+    border-bottom: dashed 1px lightgray;
 }
 
 .valueBox:first-child{
