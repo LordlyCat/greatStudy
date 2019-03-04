@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-<!--     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
- -->    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <!--     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#000000" />
     <!--
       manifest.json provides metadata used when your web app is added to the
@@ -24,10 +23,10 @@
     -->
     <script src="193.112.183.206/BranchesTrees.json" type="application/json" charset="utf-8"></script>
     <link rel="stylesheet" type="application/json" href="193.112.183.206/BranchesTrees.json">
-
     <title>大学习</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -40,30 +39,40 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!-- <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="https://wx.idsbllp.cn/wx-api/share.js"></script>
     <script>
-    WXSHARE.config({ debug: false });
-    WXSHARE.ready(function() {
-        var option = {
-            title: "青年大学习|重庆共青团",
-            link: "http://test.shingdstar.com/admin/youth/hello",
-            imgUrl: 'http://test.shingdstar.com/greatStudy/build/static/media/share.jpg',
-            desc: '重庆共青团学习微课堂',
-            type: '',
-            success: function() {
-                console.log('分享成功');
-            },
-            cancel: function() {
-                console.log('取消分享');
-            },
-        };
-        wx.onMenuShareTimeline(option);
-        wx.onMenuShareAppMessage(option);
-        wx.onMenuShareQQ(option);
-        wx.onMenuShareWeibo(option);
-        wx.onMenuShareQZone(option);
-    });
+    // WXSHARE.config({ debug: false });
+    // WXSHARE.ready(function() {
+    //     var option = {
+    //         title: "青年大学习|重庆共青团",
+    //         link: "http://test.shingdstar.com/admin/youth/hello",
+    //         imgUrl: 'http://test.shingdstar.com/greatStudy/build/static/media/share.jpg',
+    //         desc: '重庆共青团学习微课堂',
+    //         type: '',
+    //         success: function() {
+    //             console.log('分享成功');
+    //         },
+    //         cancel: function() {
+    //             console.log('取消分享');
+    //         },
+    //     };
+    //     wx.onMenuShareTimeline(option);
+    //     wx.onMenuShareAppMessage(option);
+    //     wx.onMenuShareQQ(option);
+    //     wx.onMenuShareWeibo(option);
+    //     wx.onMenuShareQZone(option);
+    // });
+    </script> -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e253ee05c494adcf09679a66b33f29b6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
     </script>
-  </body>
+</body>
+
 </html>
