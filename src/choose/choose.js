@@ -115,9 +115,9 @@ class Choose extends Component {
                 </div>
             )
         }
-        
+
         let newData = {};
-        
+
         let mechanisms = data.mechanisms.map(element => element.mechanism_name);
         let branches_name = data.mechanisms[this.state.branchesKey].branches.map(element => element.branches_name)
         //['abcdefghijklmnopqrstuvwxyz']
@@ -167,7 +167,7 @@ class DropBox extends Component {
     show() {
         let timeDifference = (new Date()).valueOf() - this.touchStartTime;
         console.log(timeDifference);
-        if (timeDifference > 300) {
+        if (timeDifference > 200) {
             return false;
         }
         document.querySelector('.dropWrapper').scrollTop = 0;
@@ -182,10 +182,11 @@ class DropBox extends Component {
                 aa = false;
             } else {
                 this.setState({
-                    height: '21vw',
+                    height: '50vw',
                     showList: true
                 })
                 aa = false
+
             }
         } else if (this.state.showList && !this.state.moveFlag) {
             this.setState({
@@ -222,7 +223,7 @@ class DropBox extends Component {
                     } else {
                         userData.branches_name = showContent;
                     }
-                    
+
                 } else {
                     userData.mechanism_name = showContent;
                 }
@@ -251,7 +252,7 @@ class DropBox extends Component {
                 setSelected={this.setSelected} 
                 setBranchesKey={this.props.setBranchesKey}/>
             }
-            
+
         }
         return (
             <div className={this.props.classname} 
@@ -314,7 +315,9 @@ class ValueBox extends Component {
             backgroundColor: 'rgb(248, 248, 229)'
         })
         this.props.setSelected(this.props.value);
-        if (this.props.setBranchesKey) {this.props.setBranchesKey(this.props.myKey)}
+        if (this.props.setBranchesKey) {
+            this.props.setBranchesKey(this.props.myKey)
+        }
     }
     render() {
         return (
@@ -379,7 +382,7 @@ class BulletBox extends Component {
         userData.category_name = localStorage.getItem('system');
         console.log(userData);
         for (var value in userData) {
-            
+
             if (userData[value].length === 0 || userData[value].replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) {
                 alert('填写内容不能为空')
                 return false;
