@@ -19,42 +19,28 @@ let userData = {
 let resetFlag = false;
 
 let selectedIndex = null;
-// let ajaxs = (opinion) => {
-//     let opt = opinion;
-//     let ajax = new XMLHttpRequest();
-//     ajax.onreadystatechange = function() {
-//         if (ajax.readyState === 4 && ajax.status === 200) {
-//             var response = ajax.responseText;
-//             opt.success(response);
-//         }
-//     };
-//     ajax.open(opt.method, opt.url, opt.async);
-//     ajax.setRequestHeader("Content-type", opt.header);
-//     ajax.send(opt.data);
-// }
 
+var verificationCookie = (cookie) => {
+    let flag = false;
+    let expire = false;
+    let cookieArr = cookie.split('; ');
+    for (let variable of cookieArr) {
+        console.log(variable.split('='));
+        if (variable.split('=')[0] === '_tk') {
+            flag = true;
+        }
+        if (variable.split('=')[0] === 'expire' && parseInt(variable.split('=')[1]) * 1000 > Date.parse(new Date())) {
+            expire = true;
+        }
+    }
+    //console.log(flag, expire)
+    return flag && expire;
+}
 //// "proxy": "http://193.112.183.206"
 //193.112.183.206/BranchesTrees.json
 class Choose extends Component {
     constructor() {
         super();
-
-        // ajax({
-        //     url: 'BranchesTrees.json',
-        //     method: 'GET',
-        //     async: true,
-        //     headers: {
-        //         "Content-type": 'application/json'
-        //     },
-        //     //header: 'application/json',
-        //     success: (data) => {
-        //         //unescape(str.replace(/\U/g, '%u'))
-        //         console.log(JSON.parse(data))
-        //     },
-        //     error: (err) => {
-        //         console.log(err);
-        //     }
-        // })
         this.state = {
             data: this.props,
             branchesKey: 0,
@@ -70,6 +56,11 @@ class Choose extends Component {
 
         this.setCoverStyle = this.setCoverStyle.bind(this);
         this.setBranchesKey = this.setBranchesKey.bind(this);
+    }
+    componentWillMount() {
+        if (!verificationCookie(document.cookie)) {
+            window.location.href = 'http://study.redrock.team/admin/youth/hello';
+        }
     }
     setCoverStyle() {
         console.log(aa);

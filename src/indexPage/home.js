@@ -5,6 +5,22 @@ import './home.css';
 import ajax from '../ajax.js';
 
 
+var verificationCookie = (cookie) => {
+    let flag = false;
+    let expire = false;
+    let cookieArr = cookie.split('; ');
+    for (let variable of cookieArr) {
+        console.log(variable.split('='));
+        if (variable.split('=')[0] === '_tk') {
+            flag = true;
+        }
+        if (variable.split('=')[0] === 'expire' && parseInt(variable.split('=')[1]) * 1000 > Date.parse(new Date())) {
+            expire = true;
+        }
+    }
+    //console.log(flag, expire)
+    return flag && expire;
+}
 
 class Home extends Component {
     constructor() {
@@ -14,6 +30,10 @@ class Home extends Component {
         }
     }
     componentWillMount() {
+        if (!verificationCookie(document.cookie)) {
+            window.location.href = 'http://study.redrock.team/admin/youth/hello';
+            return false;
+        }
         ajax.bind(this)({
             url: '/BranchesTrees.json',
             method: 'GET',
