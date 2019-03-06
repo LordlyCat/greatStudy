@@ -7,7 +7,7 @@
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background: url(https://i.loli.net/2019/03/06/5c7e9d9fc1324.png) no-repeat;
+    background: url(../img/chooseBackground.png) no-repeat;
     background-size: 100% 100%;
 }
 
@@ -102,7 +102,7 @@
     overflow: hidden;
     width: 85vw;
     height: 85vw;
-    background: url('https://i.loli.net/2019/03/06/5c7e9d9ec94a6.png') no-repeat;
+    background: url('../img/bullet.png') no-repeat;
     background-size: 100% 100%;
     margin-left: 7.5vw;
     margin-top: 20vh;
