@@ -31,6 +31,7 @@ class Home extends Component {
     }
     componentWillMount() {
         if (!verificationCookie(document.cookie)) {
+
             window.location.href = 'http://study.redrock.team/admin/youth/hello';
             return false;
         }
