@@ -7,7 +7,7 @@
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background: url(../img/chooseBackground.png) no-repeat;
+    background: url(http://lscdn.redrock.team/media/chooseBackground.738afef6.png) no-repeat;
     background-size: 100% 100%;
 }
 
@@ -102,7 +102,7 @@
     overflow: hidden;
     width: 85vw;
     height: 85vw;
-    background: url('../img/bullet.png') no-repeat;
+    background: url('http://lscdn.redrock.team/media/bullet.1eb21534.png') no-repeat;
     background-size: 100% 100%;
     margin-left: 7.5vw;
     margin-top: 20vh;
